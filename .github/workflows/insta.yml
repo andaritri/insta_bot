@@ -14,7 +14,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
-      name: Install requirements
-      run: pip install -r requirements.txt
-      name: Run instapy
-      run: python3 insta_bot.py
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Run instapy
+        env:
+          INSTA_USER: ${{ secrets.INSTA_USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: python3 insta_bot.py
